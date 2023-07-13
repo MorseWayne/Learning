@@ -7,3 +7,6 @@ Personal Learning Conclusion
 
 ## 编程语言学习
 - Rust语言: https://course.rs/about-book.html
+
+## 设计模式
+Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
