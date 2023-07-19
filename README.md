@@ -13,6 +13,9 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 
 ## 工具网站
 ### AI工具
+#### 智能问答
 - Claude: https://claude.ai/chat/
+#### 翻译工具
+- DeepL: https://www.deepl.com/zh/translator
 ### 其他工具
 - GIF录制：https://www.screentogif.com/
