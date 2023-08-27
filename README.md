@@ -6,7 +6,17 @@ Personal Learning Conclusion
 - 环形队列: https://juejin.cn/post/7113550346835722276#heading-6
 
 ## 编程语言学习
-- Rust语言: https://course.rs/about-book.html
+- Rust语言: 
+  - https://course.rs/about-book.html
+  - https://nomicon.purewhite.io/intro.html
+  - Rust Primer: https://rustcc.gitbooks.io/rustprimer/content/
+- Rust练习: https://exercism.org/dashboard
+- Rust库搜索: https://docs.rs/
+- Rust调试： https://github.com/vadimcn/codelldb/blob/v1.9.2/MANUAL.md
+- Rust中文手册: https://rustwiki.org/zh-CN/reference/introduction.html
+- FFI系列:
+  - build.rs配置: https://learnku.com/docs/cargo-book/2018/build-scripts/4777
+  - rust和c++的相互调用: https://cxx.rs/index.html
 
 ## 设计模式
 Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
@@ -19,3 +29,7 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 - DeepL: https://www.deepl.com/zh/translator
 ### 其他工具
 - GIF录制：https://www.screentogif.com/
+
+## C++学习专区
+### 常见方法
+- Segment Fault问题定位：https://www.cnblogs.com/longjiang-uestc/p/10635135.html
