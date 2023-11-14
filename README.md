@@ -43,3 +43,6 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 
 ## Python学习
 - https://visionguide.readthedocs.io/zh_CN/latest/python/tool/%E6%89%93%E5%8C%85%E5%92%8C%E5%88%86%E5%8F%91Python%E7%A8%8B%E5%BA%8F/
+
+## 资源下载
+Bandicam: https://www.52pojie.cn/thread-1274351-1-1.html
