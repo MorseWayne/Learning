@@ -26,17 +26,17 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 ### 综合工具
 - 代码运行，云部署，AI辅助: https://replit.com/
 
-#### 智能问答
+#### AI 工具
 - Claude: https://claude.ai/chat/
 - https://labs.perplexity.ai/?utm_content=first_codellama&s=u&utm_source=twitter&utm_campaign=labs
 - https://www.phind.com/
+- https://bard.google.com/
 #### 翻译工具
 - DeepL: https://www.deepl.com/zh/translator
 ### 其他工具
 - GIF录制：https://www.screentogif.com/
 - 国外手机号验证码获取：https://sms-activate.org/cn
 - 协议报文格式：https://www.luismg.com/protocol
-- github copilot
 
 ## C++学习专区
 ### 常见方法
