@@ -37,6 +37,7 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 - GIF录制：https://www.screentogif.com/
 - 国外手机号验证码获取：https://sms-activate.org/cn
 - 协议报文格式：https://www.luismg.com/protocol
+- 工具大全：https://he3app.com/zh/
 
 ## C++学习专区
 ### 常见方法
