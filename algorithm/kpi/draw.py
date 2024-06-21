@@ -11,7 +11,8 @@ class DataVisualizer:
         绘制指定索引的KPI数据
         :param index: 要绘制的KPI数据索引
         """
-        abnormal, kpi_values = self.data_parser.get_kpi_data()[index]
+        kpi_data = self.data_parser.get_kpi_data()
+        abnormal, kpi_values = kpi_data[index]
 
         # kpi_values = kpi_values[0:10]
 
@@ -20,7 +21,7 @@ class DataVisualizer:
 
         num_kpis = len(kpi_values)
         fig, axes = plt.subplots(num_kpis + 1, 1, figsize=(10, 2 * num_kpis), sharex=True)
-        fig.suptitle(f"KPI {index + 1}")
+        fig.suptitle(f"KPI {index}")
 
         # 绘制abnormal数据
         ax_abnormal = axes[0]
@@ -39,6 +40,7 @@ class DataVisualizer:
             ax.grid(True)
             ax.legend()
 
+        # plt.xticks(time_index)
         plt.xlabel("Time")
         plt.show()
 
@@ -48,4 +50,4 @@ parser = DataParser('kpi_test_data.txt')
 parser.parse_data()
 
 visualizer = DataVisualizer(parser)
-visualizer.plot_kpi(0)  # 绘制第一个KPI数据
+visualizer.plot_kpi(1)  # 绘制第一个KPI数据

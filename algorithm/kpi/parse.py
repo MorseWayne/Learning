@@ -16,6 +16,7 @@ class DataParser:
             if ':' in line:
                 key, values = line.split(':')
                 if key == 'abnormal':
+                    index += 1
                     current_abnormal = [float(x) for x in values.split()]
                     self.kpi_data[index] = (current_abnormal, [])
                 elif key.startswith('kpi_'):
@@ -36,7 +37,7 @@ class DataParser:
         return self.kpi_data
 
 
-file_path = 'kpi_test_data.txt'
-parser = DataParser(file_path)
-parser.parse_data()
-parser.print_data()
+# file_path = 'kpi_test_data.txt'
+# parser = DataParser(file_path)
+# parser.parse_data()
+# parser.print_data()
