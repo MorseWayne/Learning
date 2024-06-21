@@ -1,71 +1,104 @@
-# 运维过程中需要监控很多性能指标（后面统一称为KPI），
-# 进而感知网络的质量状态。KPI之间可能存在一定的相关性（具体指波动相关，KPI波动的定义可参考CoFlux算法），
-# 如KPI1值升高可能引发KPI2值下降、KPI3值升高等。为了辅助运维人员对异常的KPI进行根因诊断，
-# 期望能够仅根据异常KPI及其他监控的KPI的时间序列，找出与异常KPI相关性最强的KPI，并进行TopN排序。
-# 选手需要根据输入的异常KPI时间序列及一组观测的其他KPI时间序列（均无标记，KPI序列的时间粒度及长度都是一致的），
-# 设计合适的相关性算法，实现KPI的相关性排序，从而确定导致KPI异常的根因。
-# 输入
-# 1、参数1：异常KPI时间序列
-# 2、参数2：其余观测KPI的时间序列
-# 3、参数3：需要输出与异常KPI最相关的其余观测KPI个数
-# 注：KPI数量<=200, 时间序列长度 <=2000；所有KPI时间序列的长度一致
-#
-# 输出
-# 按相关性由强到弱排序输出TopN相关性KPI的索引(从1开始)
-#
-# 样例
-# 输入样例 1
-# [2,6,2,4,6], [[3,8,3,3,8], [4,12,4,8,16], [0,20,8,16,16]],3
-#
-# 输出样例 1
-# [1, 3, 2]
-#
-
 import numpy as np
-from scipy.stats import spearmanr
+
+
+def simple_moving_average(data, window_size):
+    """计算简单移动平均值
+
+    Args:
+        data: 数据列表
+        window_size: 窗口大小
+
+    Returns:
+        平滑后的数据列表
+    """
+    sma = []
+    for i in range(window_size, len(data) + 1):
+        sma.append(np.mean(data[i - window_size:i]))
+    return sma
+
+
+def find_dominant_cycle(data):
+    """
+    使用傅里叶变换分析CPU使用率数据的周期性波动
+    :param cpu_usage: CPU使用率的时间序列数据，列表或numpy数组
+    :return: 如果存在周期性波动，则返回主要波动周期；否则返回0
+    """
+    # 傅里叶变换
+    cpu_frequency = np.fft.fft(data)
+    # 获取频率的幅度
+    magnitudes = np.abs(cpu_frequency)
+    # 忽略直流分量（第一个元素）并找到主频率的索引
+    dominant_index = np.argmax(magnitudes[1:]) + 1
+    # 计算样本点数量
+    num_samples = len(data)
+    # 计算主振幅对应的频率
+    dominant_freq = dominant_index / num_samples
+    # 如果主频率为0，说明没有周期性波动
+    if dominant_freq == 0:
+        return 0
+    # 计算周期（秒），考虑样本点对应的实际时间跨度
+    # 这里假设cpu_usage数组的每个元素间隔为1秒
+    dominant_cycle = 1 / dominant_freq
+
+    return dominant_cycle
+
 
 class Solution:
-
-    def _calculate_fluctuations(self, series, window_size=1):
+    def _calculate_returns(self, series):
         """
-        计算时间序列的波动部分（滑动窗口差分）
+        计算时间序列的涨跌幅度（百分比变化）
         :param series: 时间序列
-        :param window_size: 滑动窗口大小
-        :return: 波动部分的序列
+        :return: 涨跌幅度序列
         """
-        if window_size == 1:
-            return np.diff(series)
-        else:
-            return series[window_size:] - series[:-window_size]
+        series = np.array(series)
+        base_value = np.mean(series)
+        if base_value == 0:
+            base_value = 1
 
-    def correlation_analysis(self, abnormal_kpi, kpis, top_n, correlation_method='pearson', window_size=1):
+        return np.diff(series) / base_value
+
+    def _safe_corrcoef(self, x, y):
+        """
+        安全计算相关性，处理标准差为零的情况
+        :param x: 序列x
+        :param y: 序列y
+        :return: 相关性值
+        """
+        if np.std(x) == 0 or np.std(y) == 0:
+            return 0  # 如果任一序列的标准差为零，则相关性定义为0
+        return np.corrcoef(x, y)[0, 1]
+
+    def correlation_analysis(self, abnormal_kpi, kpis, top_n):
         """
         KPI相关性分析
         -------------------------------------------------------------------
         :param abnormal_kpi: 存在异常波动的KPI
         :param kpis: 观测的一组KPI列表
-        :param top_n: 输出相关KPI的个数
+        :param top_n: abnormal_kpi
         :param correlation_method: 相关性计算方法 ('pearson' 或 'spearman')
-        :param window_size: 滑动窗口大小
         :return: 输出前N个相关的KPI索引（从1开始）
         """
-        # 将异常KPI转换为NumPy数组并计算波动部分
-        abnormal_kpi_fluctuations = self._calculate_fluctuations(np.array(abnormal_kpi), window_size)
+        # 计算异常KPI的涨跌幅度
+        # window_size = round(len(abnormal_kpi) / 5) * 4
+        # abnormal_kpi = simple_moving_average(abnormal_kpi, window_size)
+        # kpis = [simple_moving_average(kpi, window_size) for kpi in kpis]
+
+        cycle = round(find_dominant_cycle(abnormal_kpi))
+        if cycle != 0:
+            abnormal_kpi = abnormal_kpi[0:cycle]
+            kpis = [kpi[0:cycle] for kpi in kpis]
+
+        abnormal_kpi_returns = self._calculate_returns(abnormal_kpi)
 
         # 存储相关性值和对应的KPI索引
         correlation_scores = []
 
-        # 将所有KPI转换为NumPy数组并计算波动部分
-        kpis_fluctuations = [self._calculate_fluctuations(np.array(kpi), window_size) for kpi in kpis]
+        # 计算所有KPI的涨跌幅度
+        kpis_returns = [self._calculate_returns(kpi) for kpi in kpis]
 
-        # 计算每个观测KPI与异常KPI的波动部分之间的相关性
-        for idx, kpi_fluctuations in enumerate(kpis_fluctuations):
-            if correlation_method == 'pearson':
-                correlation = np.corrcoef(abnormal_kpi_fluctuations, kpi_fluctuations)[0, 1]
-            elif correlation_method == 'spearman':
-                correlation, _ = spearmanr(abnormal_kpi_fluctuations, kpi_fluctuations)
-            else:
-                raise ValueError("Unsupported correlation method. Use 'pearson' or 'spearman'.")
+        # 计算每个观测KPI与异常KPI涨跌幅度之间的相关性
+        for idx, scaled_kpi in enumerate(kpis_returns):
+            correlation = self._safe_corrcoef(abnormal_kpi_returns, scaled_kpi)
             correlation_scores.append((correlation, idx + 1))  # 索引从1开始
 
         # 按相关性从高到低排序
@@ -76,9 +109,10 @@ class Solution:
 
         return top_n_indices
 
+
 # 示例用法
 sol = Solution()
 abnormal_kpi = [2, 6, 2, 4, 6]
 kpis = [[3, 8, 3, 3, 8], [4, 12, 4, 8, 16], [0, 20, 8, 16, 16]]
 top_n = 3
-print(sol.correlation_analysis(abnormal_kpi, kpis, top_n, correlation_method='spearman', window_size=1))  # 输出示例: [1, 3, 2]
+print(sol.correlation_analysis(abnormal_kpi, kpis, top_n))  # 输出示例: [1, 3, 2]
