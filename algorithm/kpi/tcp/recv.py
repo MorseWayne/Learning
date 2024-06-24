@@ -14,7 +14,7 @@ while True:
     # 接收数据
     data, address = sock.recvfrom(8096)
     data = data.decode('utf-8')
-    f.write(data)
+    print(data)
 
 # # 解析数据
 # lines = data.splitlines()

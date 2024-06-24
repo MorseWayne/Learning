@@ -1,5 +1,21 @@
 import numpy as np
 
+def simple_moving_average(data, window_size):
+    """计算简单移动平均值
+
+    Args:
+        data: 数据列表
+        window_size: 窗口大小
+
+    Returns:
+        平滑后的数据列表
+    """
+    sma = []
+    for i in range(window_size, len(data) + 1):
+        sma.append(np.mean(data[i - window_size:i]))
+    return sma
+
+
 class DataParser:
     def __init__(self, file_path):
         self.file_path = file_path
