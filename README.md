@@ -47,6 +47,7 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 ### 常见方法
 - Segment Fault问题定位：https://www.cnblogs.com/longjiang-uestc/p/10635135.html
 - 智能指针循环引用: https://www.cnlzhnn.com/%E6%B5%85%E8%B0%88shared_ptr%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/
+- ++虚函数表实现机制以及用C语言对其进行的模拟实现: https://blog.twofei.com/496/
 
 ## Python学习
 - https://visionguide.readthedocs.io/zh_CN/latest/python/tool/%E6%89%93%E5%8C%85%E5%92%8C%E5%88%86%E5%8F%91Python%E7%A8%8B%E5%BA%8F/
