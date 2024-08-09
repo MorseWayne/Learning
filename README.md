@@ -9,6 +9,7 @@ Personal Learning Conclusion
 - AI学习社区：https://www.showmeai.tech/
 ## 算法学习
 https://algo.itcharge.cn/
+https://www.hello-algo.com/
 
 ## 编程语言学习
 - Rust语言:
