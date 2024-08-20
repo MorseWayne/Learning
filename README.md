@@ -8,9 +8,9 @@ Personal Learning Conclusion
 ##
 - AI学习社区：https://www.showmeai.tech/
 ## 算法学习
-https://algo.itcharge.cn/
-https://www.hello-algo.com/
-
+- https://algo.itcharge.cn/
+- https://www.hello-algo.com/
+- https://linrongbin16.gitbook.io/gitbook-way-to-algorithm
 ## 编程语言学习
 - Rust语言:
   - 系统学习:
