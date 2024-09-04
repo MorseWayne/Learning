@@ -1,4 +1,4 @@
-# Learning
+`# Learning
 Personal Learning Conclusion
 
 
@@ -18,7 +18,9 @@ Personal Learning Conclusion
     - https://course.rs/about-book.html
     - https://nomicon.purewhite.io/intro.html
     - Rust Primer: https://rustcc.gitbooks.io/rustprimer/content/
-  - Rust练习: https://exercism.org/dashboard
+  - Rust练习:
+    - https://exercism.org/dashboard
+    - https://dtolnay.github.io/rust-quiz/34
   - Rust库搜索: https://docs.rs/
   - Rust调试： https://github.com/vadimcn/codelldb/blob/v1.9.2/MANUAL.md
   - Rust中文手册: https://rustwiki.org/zh-CN/reference/introduction.html
