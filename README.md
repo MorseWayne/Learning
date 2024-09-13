@@ -63,4 +63,3 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 
 ## 资源下载
 Bandicam: https://www.52pojie.cn/thread-1274351-1-1.html
-https://sublink.naiko.org/link/QxpnlpM6X6NzcpzQ?clash=1
