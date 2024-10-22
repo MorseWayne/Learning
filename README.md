@@ -41,6 +41,7 @@ Opaque Pointer in C++: https://www.geeksforgeeks.org/opaque-pointer-in-cpp/
 - https://labs.perplexity.ai/?utm_content=first_codellama&s=u&utm_source=twitter&utm_campaign=labs
 - https://www.phind.com/
 - https://bard.google.com/
+- openharmony专属ai: https://ai.xslht.com/web/index.html#/
 #### 翻译工具
 - DeepL: https://www.deepl.com/zh/translator
 ### 其他工具
