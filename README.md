@@ -73,3 +73,9 @@
 
 ## 资源下载
 - [Bandicam](https://www.52pojie.cn/thread-1274351-1-1.html)
+
+## 其他
+
+- [华为平板安装google服务](https://toalan.com/archives/46/)
+- [虚拟机扩容](https://www.moralok.com/2024/01/14/increase-disk-space-of-Ubuntu-server-on-VMware-without-using-GParted/)
+  
