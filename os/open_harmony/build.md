@@ -12,7 +12,7 @@
 
    虚拟机的安装步骤这里不再做过多赘述，个人虚拟机配置截图如下图：
 
-   ![vmware_configuration](figures\vmware_configuration.png)
+   ![vmware_configuration](figures/vmware_configuration.png)
 
 ### 1.2 虚拟机配置
 
