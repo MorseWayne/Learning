@@ -73,6 +73,7 @@
 
 ## 资源下载
 - [Bandicam](https://www.52pojie.cn/thread-1274351-1-1.html)
+- [Vmware](https://softwareupdate.vmware.com/cds/vmw-desktop/ws/)
 
 ## 其他
 
