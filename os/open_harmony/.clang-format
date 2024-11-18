@@ -131,11 +131,11 @@ ConstructorInitializerIndentWidth:  4
 # 延续的行的缩进宽度
 ContinuationIndentWidth:  4
 # 去除C++11的列表初始化的大括号{后和}前的空格
-Cpp11BracedListStyle: true
+Cpp11BracedListStyle: false
 #指针的*的挨着哪边Right,Left
 PointerAlignment: Left
 # 继承最常用的指针和引用的对齐方式
-DerivePointerAlignment: false
+DerivePointerAlignment: true
 # 关闭格式化
 DisableFormat:  false
 # 自动检测函数的调用和定义是否被格式为每行一个参数(Experimental)
@@ -233,8 +233,6 @@ PenaltyExcessCharacter: 1000000
 # 将函数的返回类型放到它自己的行的penalty
 PenaltyReturnTypeOnItsOwnLine:  120
 
-# 是否允许短方法单行
-AllowShortFunctionsOnASingleLine: false
 # 换行的时候对齐操作符
 #AlignOperands: true
 RawStringFormats:
@@ -273,11 +271,11 @@ SortIncludes: false
 SortUsingDeclarations: false
 
 # 在C风格类型转换后添加空格
-SpaceAfterCStyleCast: false
+SpaceAfterCStyleCast: true
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: true
 SpaceBeforeAssignmentOperators: true
-SpaceBeforeCpp11BracedList: false
+SpaceBeforeCpp11BracedList: true
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
 # 开圆括号之前添加一个空格: Never, ControlStatements, Always
@@ -306,4 +304,3 @@ StatementMacros:
 TabWidth: 4
 # 使用tab字符: Never, ForIndentation, ForContinuationAndIndentation, Always
 UseTab: Never
-...
