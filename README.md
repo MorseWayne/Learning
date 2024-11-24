@@ -79,4 +79,4 @@
 
 - [华为平板安装google服务](https://toalan.com/archives/46/)
 - [虚拟机扩容](https://www.moralok.com/2024/01/14/increase-disk-space-of-Ubuntu-server-on-VMware-without-using-GParted/)
-  
+- [虚拟机瘦身](https://blog.csdn.net/flyingcys/article/details/79042789)
