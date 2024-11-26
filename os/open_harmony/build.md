@@ -165,7 +165,7 @@ echo "开始编译..."
            --compute-overlap-rate=false \
            --deps-guard=true \
            --gn-args use_thin_lto=false \
-           --ninja-args=-j60 \
+           --ninja-args=-j32 \
            --gn-args archive_ndk=false \
            --gn-args enable_process_notice=false
 
@@ -177,5 +177,6 @@ echo "编译完成！"
 ## 3 参考文档
 
 [OpenHarmony 编译避坑](https://forums.openharmony.cn/forum.php?mod=viewthread&tid=2075)
-[O喷Harmony 4.0编译指南](https://forums.openharmony.cn/forum.php?mod=viewthread&tid=897)
+
+[OpenHarmony 4.0编译指南](https://forums.openharmony.cn/forum.php?mod=viewthread&tid=897)
 
