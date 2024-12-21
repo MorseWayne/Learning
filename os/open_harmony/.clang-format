@@ -264,11 +264,11 @@ RawStringFormats:
     CanonicalDelimiter: ''
     BasedOnStyle:    google
 # 允许重新排版注释
-ReflowComments: false
+ReflowComments: true
 # 允许排序#include,  maybe造成编译错误
-SortIncludes: false
+SortIncludes: true
 # 允许排序using
-SortUsingDeclarations: false
+SortUsingDeclarations: true
 
 # 在C风格类型转换后添加空格
 SpaceAfterCStyleCast: true
