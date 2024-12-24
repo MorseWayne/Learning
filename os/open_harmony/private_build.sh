@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# 设置默认变量
+# Default variables
 pr_list=""
 project_list="window_window_manager"
 
-# 函数：显示帮助信息
+# Function: Show help message
 show_help() {
-    echo "使用方法: $0 [选项]"
-    echo "选项:"
-    echo "  -h, --help     显示帮助信息"
-    echo "  -t, --target   指定编译目标"
-    echo "  -f, --fast     使用增量编译"
+    echo "Usage: $0 [options]"
+    echo "Options:"
+    echo "  -h, --help     Show help message"
+    echo "  -t, --target   Specify build target"
+    echo "  -f, --fast     Use incremental build"
 }
 
-# 函数：安装依赖包
+# Function: Install dependencies
 install_dependencies() {
-    echo "安装依赖包..."
+    echo "Installing dependencies..."
     local packages=(
         "libxinerama-dev"
         "libxcursor-dev"
@@ -25,31 +25,31 @@ install_dependencies() {
     )
     
     for package in "${packages[@]}"; do
-        echo "安装 $package..."
+        echo "Installing $package..."
         yes y | sudo apt install "$package"
     done
 }
 
-# 函数：清理和下载预构建文件
+# Function: Clean and download prebuilts
 clean_and_download() {
-    read -p "是否清理输出目录和预构建文件，并重新下载预构建文件？(y/n): " clean_and_download
+    read -p "Clean output and prebuilts, then download new prebuilts? (y/n): " clean_and_download
     if [[ $clean_and_download =~ ^[Yy]$ ]]; then
-        echo "清理输出目录和预构建文件..."
+        echo "Cleaning output and prebuilts..."
         rm -rf out
         if [ -z "$pr_list" ]; then
             rm -rf prebuilts/ohos-sdk
             rm -rf prebuilts/build-tools/common/oh-command-line-tools
         fi
         
-        echo "下载预构建文件..."
+        echo "Downloading prebuilts..."
         bash build/prebuilts_download.sh
         rm -rf ./prebuilts/*.tar.gz ./prebuilt/windows
     fi
 }
 
-# 函数：设置编译目标
+# Function: Set build target
 set_build_target() {
-    read -p "请输入编译目标(直接回车将使用默认值 'TDD$project_list'): " user_target
+    read -p "Enter build target (default: 'TDD$project_list'): " user_target
     if [[ -n $user_target ]]; then
         echo "$user_target"
     else
@@ -57,7 +57,7 @@ set_build_target() {
     fi
 }
 
-# 函数：设置环境变量
+# Function: Set environment variables
 set_environment() {
     export CCACHE_MAXSIZE=100G
     export CCACHE_BASE="${PWD}"
@@ -67,7 +67,7 @@ set_environment() {
     export CCACHE_SLOPPINESS="include_file_ctime"
 }
 
-# 函数：构建编译命令
+# Function: Build command
 build_command() {
     local build_target=$1
     local is_incremental=$2
@@ -97,22 +97,22 @@ build_command() {
     echo "$cmd"
 }
 
-# 函数：执行编译
+# Function: Execute build
 do_build() {
     local build_target=$1
     
-    read -p "是否需要增量编译？(y/n): " incremental_build
-    echo "开始编译..."
+    read -p "Use incremental build? (y/n): " incremental_build
+    echo "Starting build..."
     
     local build_cmd=$(build_command "$build_target" "$incremental_build")
     eval "$build_cmd"
     
-    echo "编译完成！"
+    echo "Build completed!"
 }
 
-# 主函数
+# Main function
 main() {
-    # 解析命令行参数
+    # Parse command line arguments
     while [[ $# -gt 0 ]]; do
         case $1 in
             -h|--help)
@@ -128,18 +128,18 @@ main() {
                 shift
                 ;;
             *)
-                echo "未知参数: $1"
+                echo "Unknown parameter: $1"
                 show_help
                 exit 1
                 ;;
         esac
     done
 
-    # 执行主要流程
+    # Execute main process
     install_dependencies
     clean_and_download
     
-    # 如果命令行没有指定编译目标，则询问用户
+    # If build target not specified in command line, ask user
     if [[ -z $build_target ]]; then
         build_target=$(set_build_target)
     fi
@@ -148,5 +148,5 @@ main() {
     do_build "$build_target"
 }
 
-# 执行主函数
+# Execute main function
 main "$@"
