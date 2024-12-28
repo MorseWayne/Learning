@@ -1,37 +1,3 @@
----
-# 本文件为clang-format的配置文件模版，实际生效的文件会基于此文件进行修改。
-# 优先级说明：    在Wecode配置->Fixbot配置界面的选项，优先级最高；
-#               在规则集中的参数，优先级次之：
-#               在此处模版配置的优先级最低，只有以上两个不涉及的项目才生效。
-# 此处添加的每个选项的注释仅供参考，详情可以参见官方文档：https://clang.llvm.org/docs/ClangFormatStyleOptions.html
-
-# 此文件修改保存之后如不生效，请点击【Wecode配置->Fixbot配置界面】中的【保存】按钮重试。
-
-# 配置界面对应的选项如下：
-# 函数参数格式：ParametersAlignment
-# 指针/引用类型跟随位置：PointerAlignment
-# namespace中代码格式：NamespaceIndentation
-# 预编译处理语句格式：IndentPPDirectives
-# 注释格式：AlignTrailingComments
-# 空函数体格式：AllowShortFunctionsOnASingleLine
-# 添加namespace注释：FixNamespaceComments
-# 大括号换行风格：BraceWrapping
-
-# 规范对应的配置项如下，如果规则集中配置了这些参数，会覆盖此文件的配置：
-# G.FMT.03 使用统一的大括号换行风格(C_RULE_ID_KR_STYLE，配置项：风格）配置为K&R风格，除了函数外其他类型左大括号位于行末。 配置为Allman风格，所有类型左大括号都换行
-# 对应配置项：BraceWrapping
-# G.FMT.05 行宽不超过120个字符	(C_RULE_ID_LINE_LENGTH，配置项：最大行宽)	按照配置的行宽进行格式化
-# 对应配置项：ColumnLimit
-# G.FMT.10 指针类型"*"跟随变量或者函数名/G.FMT.14-CPP 指针类型"*"和引用类型"&"只跟随类型或变量名 （C_RULE_ID_POINTER_DECLARE_FOLLOW_NAME，配置项：跟随类型或跟随变量名）	配置为0,2时。跟随变量名 配置为1时，跟随类型
-# 对应配置项：PointerAlignment
-# G.FMT.11 用空格突出关键字和重要信息/G.FMT.16-CPP 用空格突出关键字和重要信息 （C_RULE_ID_HORIZON_SPACE_SHIELD，配置项：花括号内侧空格风格）	配置为0时，花括号内侧没有空格,配置为1,2时，花括号内侧存在空格
-# 对应配置项：Cpp11BracedListStyle
-
-# 一些常用配置项如下：
-# 启用/禁用头文件排序：SortIncludes
-# 行内注释空格数： SpacesBeforeTrailingComments
-# 函数参数换行时对齐： AlignAfterOpenBracket
-
 # 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
 Language: Cpp
 
