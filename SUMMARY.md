@@ -18,6 +18,8 @@
     * [Redis 持久化](database/redis/redis-chi-jiu-hua.md)
     * [Redis实践](database/redis/redis-shi-jian/README.md)
       * [限流器实现](database/redis/redis-shi-jian/xian-liu-qi-shi-xian.md)
+    * [Redis命令](database/redis/redis-ming-ling/README.md)
+      * [SCRIPT LOAD](database/redis/redis-ming-ling/script-load.md)
 * [Web Server](web-server/README.md)
   * [Nginx](web-server/nginx/README.md)
     * [location匹配规则](web-server/nginx/location-pi-pei-gui-ze.md)
