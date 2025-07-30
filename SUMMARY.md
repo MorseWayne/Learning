@@ -10,7 +10,7 @@
     * [Trap](Language/C++/Trap.md)
     * [STL](language/c++/stl/README.md)
       * [Lock](language/c++/stl/lock/README.md)
-        * [Reader-Writer Lock.md](language/c++/stl/lock/reader-writer-lock.md.md)
+        * [Reader-Writer Lock](language/c++/stl/lock/reader-writer-lock.md)
 * [OS](os/README.md)
   * [android](os/android/README.md)
   * [linux](os/linux/Readme.md)
