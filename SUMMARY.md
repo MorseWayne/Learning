@@ -1,13 +1,13 @@
 # Table of contents
 
 * [Reference](README.md)
-* [Algorithm](Algorithm/Readme.md)
+* [Algorithm](algorithm.md)
 * [CareerPlanning](careerplanning/README.md)
   * [Backend](careerplanning/backend/README.md)
-    * [c++](CareerPlanning/Backend/c++.md)
+    * [c++](careerplanning/backend/c++.md)
 * [Language](language/README.md)
   * [C++](language/c++/README.md)
-    * [Trap](Language/C++/Trap.md)
+    * [Trap](language/c++/trap.md)
     * [STL](language/c++/stl/README.md)
       * [Lock](language/c++/stl/lock/README.md)
         * [Reader-Writer Lock](language/c++/stl/lock/reader-writer-lock.md)
