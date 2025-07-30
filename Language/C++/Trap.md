@@ -1,1 +1,0 @@
-[插件化设计之单例多实例问题](https://netcan.github.io/2019/11/16/%E8%A7%A3%E5%86%B3C-%E6%8F%92%E4%BB%B6%E5%8C%96%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%8D%95%E4%BE%8B%E5%A4%9A%E5%AE%9E%E4%BE%8B%E9%97%AE%E9%A2%98/)
