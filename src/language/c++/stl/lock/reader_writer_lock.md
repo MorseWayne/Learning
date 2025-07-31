@@ -6,10 +6,6 @@
 
 ### 1.1 读写锁的基本原则
 
-1. **读-读共享**：多个读操作可以同时进行，不会互相阻塞
-2. **读-写互斥**：读操作和写操作不能同时进行
-3. **写-写互斥**：多个写操作之间也是互斥的
-
 | 模式          | 描述           | 是否阻塞其他线程      |
 | ----------- | ------------ | ------------- |
 | **读锁（共享锁）** | 允许多个线程同时读取数据 | 不阻塞其他读锁，但阻塞写锁 |
@@ -20,7 +16,7 @@
 
 c++17版本引入读写锁(`std::shared_mutex`)到STL，简要代码使用示例如下：
 
-```cilkcpp
+```c++
 #include <shared_mutex>
 std::shared_mutex rw_mutex;
 
@@ -81,7 +77,7 @@ std::shared_mutex rw_mutex;
 
 ### 2.2 可能的伪代码实现
 
-```cilkcpp
+```c++
 #include <atomic>
 #include <condition_variable>
 #include <mutex>
@@ -154,7 +150,7 @@ private:
 
 真实的 `std::shared_mutex` 通常是一个**薄薄的C++封装层**，它直接调用了操作系统提供的原生读写锁API。在Linux环境下，`std::shared_mutex` 几乎总是基于 **`pthreads`** 库中的 `pthread_rwlock_t` 实现的，
 
-```cpp
+```c++
 // 这是libstdc++中<shared_mutex>的简化示意
 namespace std {
   class shared_mutex {
