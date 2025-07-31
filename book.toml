@@ -1,0 +1,22 @@
+[book]
+authors = ["MorseWayne"]
+language = "zh-CN"
+src = "src"
+title = "编程之旅"
+
+[output.html.playground]
+editable = true
+line-numbers = true
+
+[output.html.code.hidelines]
+python = "~"
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
+
