@@ -4,6 +4,13 @@ language = "zh-CN"
 src = "src"
 title = "编程之旅"
 
+[output.html]
+smart-punctuation = true
+mathjax-support = true
+site-url = "/programming_journey/"
+git-repository-url = "https://github.com/MorseWayne/programming_journey"
+hash-files = true
+
 [output.html.playground]
 editable = true
 line-numbers = true
