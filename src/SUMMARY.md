@@ -43,3 +43,9 @@
 - [Web Server](web-server/README.md)
   - [Nginx](web-server/nginx/README.md)F
     - [location匹配规则](web-server/nginx/location_matching.md)
+
+
+# 算法
+- [算法](algorithm/README.md)
+  - [动态规划](algorithm/dp/README.md)
+    - [练习1](algorithm/dp/practice/luogu_p1896.md)
