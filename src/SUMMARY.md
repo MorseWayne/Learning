@@ -46,6 +46,5 @@
 
 
 # 算法
-- [算法](algorithm/README.md)
-  - [动态规划](algorithm/dp/README.md)
-    - [练习1](algorithm/dp/practice/luogu_p1896.md)
+- [动态规划](algorithm/dp/README.md)
+  - [状态压缩](algorithm/dp/practice/luogu_p1896.md)

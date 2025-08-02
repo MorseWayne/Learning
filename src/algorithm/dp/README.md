@@ -1,4 +1,4 @@
-# DP
+# DP(dynamic programming)
 
 ## 介绍
 
@@ -105,6 +105,18 @@ public:
 };
 ```
 
-## 经典练习
+上面只是一个简单的一维DP处理问题，实际考察的还有更复杂的多维DP，状态压缩DP，树状DP等，可以详细展开学习。
+推荐阅读：https://www.hello-algo.com/chapter_dynamic_programming/intro_to_dynamic_programming/
+系统学习一下DP思路。
+
+其实DP简单理解也是一种枚举法，它枚举了程序的初始状态到最终要求解的状态之间所有状态来得出最终结果。
+
+
+## 基础练习
+
+- [买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description)
+- [卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description)
+
+## 进阶练习
 
 - [互不侵犯](practice/luogu_p1896.md)
