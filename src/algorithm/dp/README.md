@@ -106,11 +106,9 @@ public:
 ```
 
 上面只是一个简单的一维DP处理问题，实际考察的还有更复杂的多维DP，状态压缩DP，树状DP等，可以详细展开学习。
-推荐阅读：https://www.hello-algo.com/chapter_dynamic_programming/intro_to_dynamic_programming/
+推荐阅读：[Hello算法-动态规划篇](https://www.hello-algo.com/chapter_dynamic_programming/intro_to_dynamic_programming/)
 系统学习一下DP思路。
-
 其实DP简单理解也是一种枚举法，它枚举了程序的初始状态到最终要求解的状态之间所有状态来得出最终结果。
-
 
 ## 基础练习
 
