@@ -114,6 +114,7 @@ public:
 
 - [买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description)
 - [卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description)
+- [打家劫舍](practice/house_robber.md)
 
 ## 进阶练习
 

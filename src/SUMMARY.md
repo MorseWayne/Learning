@@ -48,4 +48,5 @@
 # 算法
 - [动态规划](algorithm/dp/README.md)
   - [状态压缩](algorithm/dp/practice/luogu_p1896.md)
+  - [打家劫舍](algorithm/dp/practice/house_robber.md)
 - [链表环](algorithm/list_circle/README.md)
