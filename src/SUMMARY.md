@@ -10,7 +10,9 @@
   - [STL深入剖析](language/c++/stl/README.md)
     - [锁机制](language/c++/stl/lock/README.md)
     - [读写锁](language/c++/stl/lock/reader_writer_lock.md)
+  - [编程工具](language/c++/tools/README.md)
   - [常见编程陷阱](language/c++/trap.md)
+- [编译技术](language/jit.md)
 
 ---
 
@@ -25,6 +27,7 @@
 --- -->
 
 # 数据库
+
 - [Redis](database/redis/README.md)
   - [基础知识](database/redis/basic/README.md)
     - [数据结构](database/redis/basic/data_structure.md)
@@ -44,8 +47,8 @@
   - [Nginx](web-server/nginx/README.md)F
     - [location匹配规则](web-server/nginx/location_matching.md)
 
-
 # 算法
+
 - [动态规划](algorithm/dp/README.md)
   - [状态压缩](algorithm/dp/practice/luogu_p1896.md)
   - [打家劫舍](algorithm/dp/practice/house_robber.md)
