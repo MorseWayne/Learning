@@ -5,6 +5,8 @@ src = "src"
 title = "编程之旅"
 
 [output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
 smart-punctuation = true
 mathjax-support = true
 site-url = "/programming_journey/"
@@ -19,10 +21,13 @@ line-numbers = true
 python = "~"
 
 [output.html.search]
-limit-results = 20
-use-boolean-and = true
-boost-title = 2
-boost-hierarchy = 2
-boost-paragraph = 1
-expand = true
-heading-split-level = 2
+enable = true            # enables the search feature
+limit-results = 30       # maximum number of search results
+teaser-word-count = 30   # number of words used for a search result teaser
+use-boolean-and = true   # multiple search terms must all match
+boost-title = 2          # ranking boost factor for matches in headers
+boost-hierarchy = 1      # ranking boost factor for matches in page names
+boost-paragraph = 1      # ranking boost factor for matches in text
+expand = true            # partial words will match longer terms
+heading-split-level = 3  # link results to heading levels
+copy-js = true           # include Javascript code for search

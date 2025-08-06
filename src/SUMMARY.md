@@ -7,6 +7,9 @@
 # 编程语言
 
 - [C++](language/c++/README.md)
+  - [基础知识](language/c++/basic/README.md)
+    - [面向对象](language/c++/basic/oop/README.md)
+      - [重载，重写和多态](language/c++/basic/oop/overload_override_polymorphism.md)
   - [STL深入剖析](language/c++/stl/README.md)
     - [锁机制](language/c++/stl/lock/README.md)
     - [读写锁](language/c++/stl/lock/reader_writer_lock.md)
