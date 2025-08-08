@@ -3,7 +3,7 @@ import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 
 export default defineUserConfig({
-  base: "/",
+  base: "/programming_journey/",
 
   lang: "zh-CN",
   title: "编程之旅✨",
