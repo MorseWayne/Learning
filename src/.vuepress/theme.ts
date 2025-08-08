@@ -136,8 +136,8 @@ export default hopeTheme({
     pwa: {
       favicon: "./books.svg",
       cacheHTML: false,
-      cacheImage: false,
-      appendBase: false,
+      cacheImage: true,
+      appendBase: true,
       // apple: {
       //   icon: "/assets/icon/apple-icon-152.png",
       //   statusBarColor: "black",
