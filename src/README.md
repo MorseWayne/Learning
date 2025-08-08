@@ -1,6 +1,6 @@
 ---
 home: true
-icon: fa7-solid:house
+icon: /assets/icons/house.svg
 title: 首页
 breadcrumbExclude: true
 # heroImage: https://theme-hope-assets.vuejs.press/logo.svg

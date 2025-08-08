@@ -1,6 +1,6 @@
 ---
 title: 基础篇
-icon: mingcute:directory-line
+icon: /assets/icons/directory.svg
 article: false
 index: false
 dir:

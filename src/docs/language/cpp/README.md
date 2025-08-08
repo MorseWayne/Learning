@@ -1,6 +1,6 @@
 ---
 title: C++
-icon: skill-icons:cpp
+icon: /assets/icons/cpp.svg
 article: false
 index: false
 dir:

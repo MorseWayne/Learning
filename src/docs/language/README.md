@@ -1,6 +1,6 @@
 ---
 title: 编程语言
-icon: clarity:directory-line
+icon: /assets/icons/directory.svg
 article: false
 index: false
 ---

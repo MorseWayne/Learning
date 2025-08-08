@@ -1,6 +1,6 @@
 ---
 title: Redis
-icon: logos:redis
+icon: /assets/icons/redis.svg
 article: false
 index: false
 ---

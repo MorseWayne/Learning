@@ -1,6 +1,6 @@
 ---
 title: 读写锁
-icon: material-symbols-light:article-outline
+icon: /assets/icons/article.svg
 order: 2
 category:
   - C++

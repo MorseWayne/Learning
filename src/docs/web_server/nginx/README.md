@@ -1,6 +1,6 @@
 ---
 title: Nginx
-icon: material-icon-theme:nginx
+icon: /assets/icons/nginx.svg
 article: false
 index: false
 dir:

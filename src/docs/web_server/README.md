@@ -1,6 +1,6 @@
 ---
 title: Web-Server
-icon: mdi:server-network
+icon: /assets/icons/server.svg
 article: false
 index: false
 ---

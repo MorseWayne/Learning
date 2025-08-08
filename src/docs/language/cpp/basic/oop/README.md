@@ -1,6 +1,6 @@
 ---
 title: 面向对象编程
-icon: mingcute:directory-line
+icon: /assets/icons/directory.svg
 article: false
 index: false
 ---

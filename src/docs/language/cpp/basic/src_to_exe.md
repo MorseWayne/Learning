@@ -1,6 +1,6 @@
 ---
 title: 编译过程详解
-icon: material-symbols-light:article-outline
+icon: /assets/icons/article.svg
 order: 1
 category:
   - C++

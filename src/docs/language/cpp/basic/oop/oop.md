@@ -1,6 +1,6 @@
 ---
 title: 核心思想
-icon: material-symbols-light:article-outline
+icon: /assets/icons/article.svg
 order: 1
 category:
   - C++

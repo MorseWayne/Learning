@@ -1,6 +1,6 @@
 ---
 title: 链表操作
-icon: mingcute:directory-line
+icon: /assets/icons/directory.svg
 article: false
 index: false
 ---

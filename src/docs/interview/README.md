@@ -1,6 +1,6 @@
 ---
 title: 面试经历
-icon: streamline-ultimate:job-search-man-bold
+icon: /assets/icons/job.svg
 article: false
 index: false
 ---

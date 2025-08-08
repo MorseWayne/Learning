@@ -1,6 +1,6 @@
 ---
 title: 进阶篇
-icon: mingcute:directory-line
+icon: /assets/icons/directory.svg
 article: false
 index: false
 dir:

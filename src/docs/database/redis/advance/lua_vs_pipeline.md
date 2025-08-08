@@ -1,6 +1,6 @@
 ---
 title: Lua脚本 vs Pipeline
-icon: material-symbols-light:article-outline
+icon: /assets/icons/article.svg
 order: 1
 category:
   - Redis

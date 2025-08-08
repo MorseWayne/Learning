@@ -1,6 +1,6 @@
 ---
 title: 数据库
-icon: clarity:directory-line
+icon: /assets/icons/directory.svg
 article: false
 index: false
 ---

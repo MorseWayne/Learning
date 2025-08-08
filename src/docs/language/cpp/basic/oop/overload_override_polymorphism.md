@@ -1,6 +1,6 @@
 ---
 title: 重写 vs 重载 vs 多态
-icon: material-symbols-light:article-outline
+icon: /assets/icons/article.svg
 order: 2
 category:
   - C++

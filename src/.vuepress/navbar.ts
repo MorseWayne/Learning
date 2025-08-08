@@ -5,7 +5,7 @@ export default navbar([
    {
     text: "编程语言",
     prefix: "/docs/language/",
-    icon: "solar:programming-bold",
+    icon: "/assets/icons/programming.svg",
     children: [
       "cpp/"
     ],
@@ -13,7 +13,7 @@ export default navbar([
   {
     text: "数据库",
     prefix: "/docs/database/",
-    icon: "ant-design:database-filled",
+    icon: "/assets/icons/database.svg",
     children: [
       "redis/"
     ],
@@ -22,7 +22,7 @@ export default navbar([
   {
     text: "Web Server",
     prefix: "/docs/web_server/",
-    icon: "mdi:server-network",
+    icon: "/assets/icons/server.svg",
     children: [
       "nginx/"
     ],
