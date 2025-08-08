@@ -4,18 +4,15 @@ import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
-
+  hostname: "https://rookiiie.top",
   author: {
-    name: "Mr.Hope",
-    url: "https://mister-hope.com",
+    name: "MorseWayne",
+    url: "https://rookiiie.top",
   },
 
-  logo: "https://theme-hope-assets.vuejs.press/logo.svg",
-
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
-
-  docsDir: "src",
+  logo: "/books.svg",
+  repo: "MorseWayne/programming_journey",
+  docsDir: "docs",
 
   // 导航栏
   navbar,
@@ -24,7 +21,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  // footer: "默认页脚",
   displayFooter: true,
 
   // 加密配置
@@ -80,12 +77,10 @@ export default hopeTheme({
     vPre: true,
 
     // 取消注释它们如果你需要 TeX 支持
-    // math: {
-    //   // 启用前安装 katex
-    //   type: "katex",
-    //   // 或者安装 mathjax-full
-    //   type: "mathjax",
-    // },
+    math: {
+      // 启用前安装 katex
+      type: "katex",
+    },
 
     // 如果你需要幻灯片，安装 @vuepress/plugin-revealjs 并取消下方注释
     // revealjs: {
