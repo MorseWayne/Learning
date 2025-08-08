@@ -13,6 +13,7 @@ export default hopeTheme({
   logo: "/books.svg",
   repo: "MorseWayne/programming_journey",
   docsDir: "docs",
+  darkmode: "enable",
 
   // 导航栏
   navbar,
@@ -133,7 +134,7 @@ export default hopeTheme({
 
     // 如果你需要 PWA。安装 @vuepress/plugin-pwa 并取消下方注释
     pwa: {
-      favicon: "/books.svg",
+      favicon: "./books.svg",
       cacheHTML: false,
       cacheImage: false,
       appendBase: false,
