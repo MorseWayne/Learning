@@ -119,10 +119,10 @@ export default hopeTheme({
     // 注意: 仅用于测试! 你必须自行生成并在生产环境中使用自己的评论服务
     comment: {
       provider: "Giscus",
-      repo: "vuepress-theme-hope/giscus-discussions",
-      repoId: "R_kgDOG_Pt2A",
+      repo: "MorseWayne/programming_journey",
+      repoId: "R_kgDOJ6n4-Q",
       category: "Announcements",
-      categoryId: "DIC_kwDOG_Pt2M4COD69",
+      categoryId: "DIC_kwDOJ6n4-c4CuAVl",
     },
 
     components: {

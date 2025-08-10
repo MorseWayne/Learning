@@ -27,7 +27,6 @@ category:
 ### 流程图概览
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'lineColor': '#000000', 'fontSize': '14px', 'textColor': '#000000', 'background': '#ffffff'}}}%%
 flowchart LR
     A["💻 源代码<br>(main.cpp)"] --> B["📝 预处理<br>展开宏/包含头文件/移除注释<br>产物：main.i"]
     B --> C["⚙️ 编译<br>词法+语法+语义分析 → 生成汇编<br>产物：main.s"]
