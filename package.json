@@ -13,6 +13,7 @@
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.24",
     "@vuepress/plugin-pwa": "2.0.0-rc.112",
+    "@waline/client": "^3.6.0",
     "katex": "^0.16.22",
     "sass-embedded": "^1.90.0",
     "vue": "^3.5.18",

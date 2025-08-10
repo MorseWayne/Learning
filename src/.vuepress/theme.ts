@@ -117,12 +117,17 @@ export default hopeTheme({
   // 在这里配置主题提供的插件
   plugins: {
     // 注意: 仅用于测试! 你必须自行生成并在生产环境中使用自己的评论服务
+    // comment: {
+    //   provider: "Giscus",
+    //   repo: "MorseWayne/programming_journey",
+    //   repoId: "R_kgDOJ6n4-Q",
+    //   category: "Announcements",
+    //   categoryId: "DIC_kwDOJ6n4-c4CuAVl",
+    // },
+
     comment: {
-      provider: "Giscus",
-      repo: "MorseWayne/programming_journey",
-      repoId: "R_kgDOJ6n4-Q",
-      category: "Announcements",
-      categoryId: "DIC_kwDOJ6n4-c4CuAVl",
+      provider: "Waline",
+      serverURL: "https://programmingjourneycomments-bgx4mw3ev-morsewaynes-projects.vercel.app", // your server url
     },
 
     components: {
