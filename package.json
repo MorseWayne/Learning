@@ -21,7 +21,11 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@parcel/watcher",
       "esbuild"
     ]
+  },
+  "dependencies": {
+    "mermaid": "^11.9.0"
   }
 }
