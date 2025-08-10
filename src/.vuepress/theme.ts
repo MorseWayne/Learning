@@ -13,7 +13,8 @@ export default hopeTheme({
   logo: "/books.svg",
   repo: "MorseWayne/programming_journey",
   docsDir: "docs",
-  darkmode: "enable",
+  darkmode: "switch",
+  toggle: true,
 
   // 导航栏
   navbar,
