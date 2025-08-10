@@ -127,7 +127,7 @@ export default hopeTheme({
 
     comment: {
       provider: "Waline",
-      serverURL: "https://programmingjourneycomments-bgx4mw3ev-morsewaynes-projects.vercel.app", // your server url
+      serverURL: "https://programmingjourneycomments.vercel.app/", // your server url
     },
 
     components: {
