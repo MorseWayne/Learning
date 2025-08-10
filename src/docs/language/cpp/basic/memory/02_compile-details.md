@@ -1,7 +1,7 @@
 ---
-title: 编译过程详解
+title: 编译过程
 icon: /assets/icons/article.svg
-order: 1
+order: 2
 category:
   - C++
 ---
@@ -83,6 +83,14 @@ flowchart LR
 | 2    | 地址分配（重定位） | 为代码和数据分配最终内存地址，并替换占位符                   | 将 `printf` 的调用地址替换为实际地址 |
 | 3    | 合并段（Sections） | 将各文件的 `.text`（代码段）、`.data`（数据段）等合并        | 合并 `main.o` 与库文件的代码段       |
 | 4    | 生成可执行文件     | 输出 `.exe`（Windows）或 `a.out / ELF`（Unix/Linux）可直接运行的程序 | 生成 `main.exe` 或 `a.out`           |
+
+::: info 什么是ELF文件
+
+ELF（Executable and Linkable Format，可执行与可链接格式）是一种用于可执行文件、目标代码、共享库和核心转储（core dump）的标准文件格式。它是现代操作系统（如Linux、Unix）中常见的二进制文件格式，用于描述程序的存储结构和加载方式。
+
+![ELF文件格式, 转载自Leetcode](./elf_format.png)
+
+:::
 
 ## 3 动手观察
 
