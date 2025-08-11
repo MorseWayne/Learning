@@ -1,5 +1,5 @@
 ---
-title: 编译过程
+title: 从源文件到可执行程序
 icon: /assets/icons/article.svg
 order: 2
 category:
@@ -34,8 +34,6 @@ flowchart LR
     D --> E["🔗 链接<br>符号解析+地址分配 → 可执行文件<br>产物：main"]
     E --> F["▶️ 运行程序<br>输出：Hello, World!"]
 ```
-
-
 
 ## 2. 编译过程详解
 
@@ -86,9 +84,8 @@ flowchart LR
 
 ::: info 什么是ELF文件
 
-ELF（Executable and Linkable Format，可执行与可链接格式）是一种用于可执行文件、目标代码、共享库和核心转储（core dump）的标准文件格式。它是现代操作系统（如Linux、Unix）中常见的二进制文件格式，用于描述程序的存储结构和加载方式。
-
-![ELF文件格式, 转载自Leetcode](./elf_format.png)
+ELF（Executable and Linkable Format，可执行与可链接格式）是一种用于可执行文件、目标代码、共享库和核心转储（core dump）的标准文件格式。它是现代操作系统（如Linux、Unix）中常见的二进制文件格式，用于描述程序的存储结构和加载方式
+，更多内容请查看[ELF文件结构详解](./03_elf-file-structure.md)
 
 :::
 
@@ -114,7 +111,7 @@ int main() {
 
 使用 `g++ -E main.cpp -o main.i` 模拟该过程，该命令会生成一个 `main.i` 的产物。
 
-::: details 
+::: details
 
 ```bash
 wayne@server:~/source/temp$ ll
