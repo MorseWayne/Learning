@@ -28,4 +28,5 @@ export default navbar([
     ],
   },
   "/docs/interview/",
+  "/docs/network/",
 ]);
