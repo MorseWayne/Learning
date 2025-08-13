@@ -27,6 +27,6 @@ export default navbar([
       "nginx/"
     ],
   },
-  "/docs/interview/",
   "/docs/network/",
+  "/docs/interview/",
 ]);
