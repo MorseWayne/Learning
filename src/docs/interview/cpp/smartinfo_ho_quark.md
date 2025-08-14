@@ -1,5 +1,5 @@
 ---
-title: 智能信息-鸿蒙开发工程师-夸克-广州
+title: 智能信息-夸克-广州
 icon: /assets/icons/article.svg
 order: 2
 category:
@@ -121,15 +121,185 @@ SSH协议网上有很多讲解的，这里不再赘述，我猜面试官应该�
 
 :::
 
-#### 知道哪些基于`udp`实现的协议吗，比如`quic`协议栈，了解吗，详细讲讲？
+#### 知道哪些基于`udp`实现的协议吗，了解吗，详细讲讲？
 
-### Socket编程相关
+::: details 查看答案
 
-#### 讲一下libevent库
+其实面试官是想引出QUIC协议栈，当然我也提到了，但是我本人对这个确实没有详细去了解过。
 
-你提到了`libevent`库，你了解它的核心机制吗(我提到了IO多路复用，面试官顺势就提到了`epoll`)；
+常见的基于UDP实现的协议如下表：
 
-1. 你了解`epoll`吗，`epoll`的使用方式，`epoll`监听事件的底层机制你知道吗？
+| 协议                                    | 主要用途            | 特点                                             |
+| --------------------------------------- | ------------------- | ------------------------------------------------ |
+| **QUIC**                                | Web传输（HTTP/3）   | 集成 TLS 1.3，0-RTT 握手，多路复用，快速连接迁移 |
+| **DTLS**（Datagram TLS）                | 基于 UDP 的安全传输 | TLS 的无连接版本，常用于 WebRTC、SIP             |
+| **RTP / SRTP**                          | 实时音视频传输      | SRTP 为加密版，低延迟，支持抖动缓冲              |
+| **SCTP over UDP**（如 WebRTC 数据通道） | 可靠消息传输        | 在 UDP 上封装 SCTP，支持多流                     |
+| **WireGuard**                           | VPN 协议            | 极简、快速的加密隧道协议                         |
+| **IKEv2/IPsec over UDP**                | VPN 协商            | 穿透 NAT                                         |
+| **OpenVPN UDP模式**                     | VPN                 | UDP 模式低延迟                                   |
+| **ENet** / **RakNet**                   | 游戏网络协议        | 在 UDP 上实现可靠、有序传输                      |
+| **Steam Datagram Relay**                | 游戏匹配和传输      | 优化 NAT 穿透和延迟                              |
+
+------
+
+**关于QUIC协议**
+
+QUIC（Quick UDP Internet Connections）最初由 Google 推出，现已标准化（RFC 9000 系列），是 HTTP/3 的传输层协议。
+
+其核心特性主要包括如下几点：
+
+- **基于 UDP**
+   利用 UDP 绕过中间网络设备对 TCP 的优化/限制，使新协议更易部署。
+- **集成 TLS 1.3**
+   握手时直接完成加密协商，不需要像 TCP+TLS 那样两轮握手。
+- **0-RTT 和 1-RTT 连接建立**
+   第一次连接可能需要 1-RTT（一次往返），复用已知密钥可实现 0-RTT（首次数据立即发送）。
+- **多路复用无队头阻塞**
+   在单个 QUIC 连接中并行多个数据流，某个流丢包不会阻塞其他流（TCP 中会队头阻塞）。
+- **连接迁移（Connection Migration）**
+   利用连接ID，在 NAT 切换、IP 变动时保持会话（例如从 Wi-Fi 切到 4G）。
+- **内建拥塞控制**
+   默认使用 CUBIC 或 BBR，也可自定义。
+
+ **与 TCP+TLS+HTTP/2 的对比**
+
+| 特性     | TCP+TLS+HTTP/2  | QUIC+TLS+HTTP/3      |
+| -------- | --------------- | -------------------- |
+| 握手延迟 | 至少 2-RTT      | 1-RTT 或 0-RTT       |
+| 队头阻塞 | 有              | 无                   |
+| 连接迁移 | 不支持          | 支持                 |
+| 加密     | 独立 TLS 层     | 内建 TLS 1.3         |
+| 部署难度 | 需改内核/中间件 | 用户态可实现，易部署 |
+
+更多详情参考 [一文读懂 QUIC 协议：更快、更稳、更高效的网络通信](https://www.infoq.cn/article/lddlsa5f21sty04li3hp) , QUIC协议衍生出来的HTTP/3 优势非常明显，后面我应该会写一个专题来学习`QUIC`协议。
+
+:::
+
+### socket编程相关
+
+#### 讲一下libevent库和它的核心工作机制
+
+::: details 查看答案
+
+因为我简历里面写到了，我熟悉`libevent`库，面试官对此进行了提问，
+
+:::
+
+#### 你了解`epoll`吗，讲一下`epoll`和底层机制
+
+::: details 查看答案
+
+`epoll` 是 Linux 提供的一种高效 I/O 多路复用机制，用于同时处理大量文件描述符(`fd`)上的事件，比传统的 `select`、`poll` 在性能上有明显优势。我们可以从三个层次来理解它：**接口用法** → **底层实现机制** → **为什么快**。
+
+**1. epoll的基本使用**
+
+Linux 提供了 3 个主要系统调用：
+
+1. **`epoll_create` / `epoll_create1`**
+    创建一个 epoll 实例（内核会分配一个事件管理结构）。
+2. **`epoll_ctl`**
+    注册、修改或删除感兴趣的事件（读、写、异常等）。
+3. **`epoll_wait`**
+    阻塞等待就绪事件发生，返回已准备好的 `fd` 列表。
+
+简单代码示例如下：
+
+```c++
+auto server_fd = socket(AF_INET, SOCK_STREAM, 0));
+// 省略socket套接字创建的详细过程，包括bind, listen等操作
+...
+
+// 创建epoll实例
+auto epoll_fd = epoll_create1(0);
+
+// 设置epoll绑定的fd和关注的事件
+epoll_event ev;
+ev.events = EPOLLIN | EPOLLOUT | EPOLLERR | EPOLLHUP;
+ev.data.fd = server_fd; // 设置socket描述符
+epoll_ctl(epoll_fd, EPOLL_CTL_ADD, server_fd, &ev);
+
+epoll_event events[10]; // 这个大小决定了 epoll_wait 一次最多可以返回的事件
+while (1) {
+    int nfds = epoll_wait(epoll_fd, events, MAX_EVENTS, -1);  // nfds 绝对不会超过 events的大小
+    if (nfds == -1) {
+        perror("epoll_wait");
+        exit(EXIT_FAILURE);
+    }
+    // 发生的事件在events里面连续存储
+    for (int i = 0; i < nfds; i++) {
+        if (events[i].data.fd == server_fd) {
+            if (events[i].events & EPOLLIN) {
+                // 处理可读事件（例如接受新连接）
+                // TO DO: Accept a new connection
+            }
+            if (events[i].events & EPOLLOUT) {
+                // 处理可写事件
+                // TO DO: Handle write event
+            }
+            if (events[i].events & EPOLLERR) {
+                // 处理错误事件
+                // TO DO: Handle error event
+            }
+            if (events[i].events & EPOLLHUP) {
+                // 处理挂起事件
+                // TO DO: Handle hang-up event
+            }
+        }
+    }
+}
+```
+
+**2. epoll的底层机制**
+
+`epoll`的内核结构和流程可以分成几部分：
+
+- **红黑树(RB-tree)管理所有监控的 `fd`**
+  - 内核维护一个 **红黑树** 来保存用户关心的所有 `fd`（以及它们的事件类型）。
+  - 当你调用 `epoll_ctl(ADD)` 时，`fd` 被插入到这棵树中，`MOD` 是修改节点，`DEL` 是删除节点。
+  - 这样查找和更新的复杂度是 `O(logN)`。
+
+
+- 就绪链表(ready list)存储已就绪的 `fd`
+  - 内核维护一个 **就绪链表**（双向链表），专门放置已经触发的 `fd`。
+  - 当底层设备驱动检测到某个 `fd` 可读/可写时，会直接把它加入到这个链表。
+  - 用户调用 `epoll_wait` 时，只需要遍历这个链表，检查有就绪事件发生的时间复杂度 $O(1)$ (与监控的 `fd` 总数无关), 去处理就绪的集合里面去处理每一个`fd`还是需要遍历
+
+
+- 事件回调(callback hook)
+  - epoll 在注册 `fd` 时，会在驱动的等待队列（wait queue）中挂上一个回调函数;
+  - 当设备状态变化（比如网络收包、磁盘就绪）时，驱动会调用这个回调，将 `fd` 挂到就绪链表;
+
+**3. 为什么epoll快**
+
+- **避免全量扫描**
+   `select` / `poll` 每次调用都要遍历整个 `fd` 集合，复杂度为 $O(N)$;
+   `epoll` 只关心“就绪链表”中的 `fd`，复杂度为 $O(1)$。
+
+- **内核态保存状态**
+
+  `epoll` 维护了持久的 `fd` 集合（红黑树），调用 `epoll_wait` 不用重复传入;
+
+- **事件驱动（回调）**
+   设备一旦就绪，直接通知 `epoll`，不用用户反复轮询；
+
+:::
+
+#### 你能使用epoll实现一个定时器吗
+
+::: details 查看答案
+
+`epoll` 本身不直接提供定时功能，但我们可以**利用 Linux 的 `timerfd` 机制**配合 `epoll` 实现定时器，而且这种方式比自己维护超时列表简单很多，大致实现思路如下：
+
+1. 使用内核接口`timerfd_create`创建一个定时器，得到一个文件描述符(`fd`);
+2. 使用内核接口 `timerfd_settime`，设置定时器超时时间，并且指定定时器是否循环；
+3. 通过`epoll`监听`fd`上的事件，如果定时器超时，这个`fd`就会有一个可读事件产生；
+
+[跳转查看完整实现](/docs/language/cpp/advance/multi_thread/timer.md)
+
+:::
+
+### 进程间通信相关
 
 1. **IPC相关和进程启动**
     1. 你讲到了你熟悉`binder`，能将一下`binder`的原理吗，整个`binder`调用的整体流程是啥，`binder`的性能优化，相对于传统的`ipc`调用在数据上的性能体现是怎么样的，比如优化了多少倍？；
@@ -152,7 +322,6 @@ SSH协议网上有很多讲解的，这里不再赘述，我猜面试官应该�
     2. 查看`cpu`架构的命令是啥；
 
 5. **其余问题**
-
     1. 你业务针对于大量窗口和应用的并发请求，如何保证没问题的；
     2. 一个任务的执行出现阻塞，使用哪些分析可以分析整个线程阻塞在哪里；
     3. 一个任务的调度不符合预期，部分执行耗时长，使用哪些手段可以进行分析；
@@ -168,13 +337,85 @@ SSH协议网上有很多讲解的，这里不再赘述，我猜面试官应该�
 
 ## 4 笔试题
 
-使用十个线程，并发对一个int变量加100次，并将结果放入到传入的vector中，我开始实现了一个使用锁的版本
-
-，然后面试官又让实现一个**无锁版本**；
+使用十个线程，并发对一个int变量累计加100次，并将结果放入到传入的vector中，我开始实现了一个使用锁的版本，然后面试官又让实现一个**无锁版本**；
 
 ```c++
-// 函数原型如下
+// 函数原型如下, N是最终累加的结果，result记录的是N的100次变化，也是出参
 void concurrent_add(int* N, vector<int>* result) {
  
 }
 ```
+
+::: details 查看代码
+
+1. 互斥锁版本，抢占式累加，同时只能有一个线程在进行加`N`操作和修改容器。
+
+```c++
+#include <mutex>
+#include <thread>
+#include <vector>
+using namespace std;
+
+void thread_func(int* N, vector<int>* result)
+{
+    static mutex mtx;
+    lock_guard<mutex> lock(mtx);
+    if (*N > 100) {
+        return;
+    }
+    (*N)++;
+    result->emplace_back(*N);
+}
+
+void concurrent_add(int* N, vector<int>* result)
+{
+    vector<thread> threads;
+    for (int i = 0; i < 10; ++i) {
+        threads.emplace_back([=]() mutable { thread_func(N, result); });
+    }
+    for (auto& t : threads) {
+        if (t.joinable()) {
+            t.join();
+        }
+    }
+}
+```
+
+2. 无锁版本，使用原子操作和预分配的缓冲区，支持多线程同时读写，性能优化版本
+
+```c++
+#include <atomic>
+#include <mutex>
+#include <thread>
+#include <vector>
+using namespace std;
+
+atomic<int> g_cacheN { 0 };
+vector<int> g_cacheResult(100, 0);
+
+void thread_func()
+{
+    auto val = g_cacheN.fetch_add(1);  // 原子读写，加1后读取该值
+    if (val > 100) {
+        return;
+    }
+    g_cacheResult[val] = val;
+}
+
+void concurrent_add(int* N, vector<int>* result)
+{
+    vector<thread> threads;
+    for (int i = 0; i < 10; ++i) {
+        threads.emplace_back([]() mutable { thread_func(); });
+    }
+    for (auto& t : threads) {
+        if (t.joinable()) {
+            t.join();
+        }
+    }
+    *N = 100;
+    *result = g_cacheResult;
+}
+```
+
+:::
