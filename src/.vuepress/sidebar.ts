@@ -5,5 +5,6 @@ export default sidebar({
     "/docs/database/" : "structure",
     "/docs/algorithm/" : "structure",
     "/docs/interview/" : "structure",
-    "/docs/web_server/" : "structure"
+    "/docs/web_server/" : "structure",
+    "/docs/network/" : "structure"
 });
