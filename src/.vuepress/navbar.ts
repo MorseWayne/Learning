@@ -7,7 +7,8 @@ export default navbar([
     prefix: "/docs/language/",
     icon: "/assets/icons/programming.svg",
     children: [
-      "cpp/"
+      "cpp/",
+      "go/"
     ],
   },
   {
